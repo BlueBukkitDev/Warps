@@ -34,7 +34,7 @@ public class Utils {
 		ItemStack stack = new ItemStack(Material.getMaterial(mat), 1);
 		ItemMeta meta = stack.getItemMeta();
 		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-				this.main.getConfig().getString("GUI-Next-Page.Name").replaceAll("%index%", currentIndex + 1)));
+				this.main.getConfig().getString("GUI-Next-Page.Name").replaceAll("%index%", "" + currentIndex + 1)));
 		meta.setLore(this.main.getConfig().getStringList("GUI-Next-Page.Lore"));
 		meta.getPersistentDataContainer().set(this.indexKey, PersistentDataType.INTEGER,
 				Integer.valueOf(currentIndex + 1));
@@ -46,8 +46,8 @@ public class Utils {
 		String mat = this.main.getConfig().getString("GUI-Previous-Page.Item");
 		ItemStack stack = new ItemStack(Material.getMaterial(mat), 1);
 		ItemMeta meta = stack.getItemMeta();
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-				this.main.getConfig().getString("GUI-Previous-Page.Name").replaceAll("%index%", currentIndex + 1)));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.main.getConfig()
+				.getString("GUI-Previous-Page.Name").replaceAll("%index%", "" + currentIndex + 1)));
 		meta.setLore(this.main.getConfig().getStringList("GUI-Previous-Page.Lore"));
 		meta.getPersistentDataContainer().set(this.indexKey, PersistentDataType.INTEGER,
 				Integer.valueOf(currentIndex - 1));
@@ -99,13 +99,14 @@ public class Utils {
 	}
 
 	public String formatItemName(String name) {
-    String[] parts = name.split("_");
-    String result = "";
-    for (int i = 0; i < parts.length; i++) {
-      if (i > 0 && i < parts.length)
-        result = String.valueOf(String.valueOf(result)) + " "; 
-      result = String.valueOf(String.valueOf(result)) + StringUtils.capitalize(parts[i].toLowerCase());
-    } 
-    return "+ result;
-  }
+		String[] parts = name.split("_");
+		String result = "";
+		for (int i = 0; i < parts.length; i++) {
+			if (i > 0 && i < parts.length) {
+				result = String.valueOf(String.valueOf(result)) + " ";
+			}
+			result = String.valueOf(String.valueOf(result)) + StringUtils.capitalize(parts[i].toLowerCase());
+		}
+		return "§f" + result;
+	}
 }

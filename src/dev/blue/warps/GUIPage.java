@@ -19,8 +19,7 @@ public class GUIPage {
 		this.main = main;
 		this.page = pageNumber;
 		this.p = p;
-		this.gui = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&',
-				main.getConfig().getString("Warps-GUI-Name").replaceAll("%index%", this.page + 1)));
+		this.gui = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Warps-GUI-Name").replaceAll("%index%", "" + this.page + 1)));
 		addItemsToInventory();
 	}
 

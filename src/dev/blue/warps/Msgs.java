@@ -89,7 +89,7 @@ public class Msgs {
 
 		ChatColor.translateAlternateColorCodes('&', this.main.getConfig().getString("Warp-Countdown"))
 				.replaceAll("%prefix%", PREFIX()).replaceAll("%warp%", warp)
-				.replaceAll("%time%", this.main.getConfig().getInt("Warp-Delay"));
+				.replaceAll("%time%", ""+this.main.getConfig().getInt("Warp-Delay"));
 	}
 
 	public String NO_PERMS_CMD() {
@@ -109,6 +109,6 @@ public class Msgs {
 			this.main.saveConfig();
 		}
 		return ChatColor.translateAlternateColorCodes('&', this.main.getConfig().getString("Warp-Limit-Reached"))
-				.replaceAll("%limit%", limit).replaceAll("%prefix%", PREFIX());
+				.replaceAll("%limit%", ""+limit).replaceAll("%prefix%", PREFIX());
 	}
 }
