@@ -3,6 +3,7 @@ package dev.blue.warps;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -69,6 +70,31 @@ public class Utils {
 				(String) stack.getItemMeta().getPersistentDataContainer().get(this.warpKey, PersistentDataType.STRING),
 				this.main);
 	}
+	
+	public List<Warp> getWarps(Player p) {
+		List<Warp> warps = new ArrayList<>();
+		for (String each : this.main.getWarps().getKeys(false)) {
+			Warp warp = new Warp(each, this.main);
+			if(warp.getCreator() == null || (warp.getCreator() != null && !warp.getCreator().equalsIgnoreCase(p.getUniqueId().toString()))) {
+				continue;
+			}
+			warps.add(warp);
+		}
+		return warps;
+	}
+	
+	public List<Warp> getUsableWarps(Player p){
+		List<Warp> warps = new ArrayList<>();
+		for (String each : this.main.getWarps().getKeys(false)) {
+			Warp warp = new Warp(each, this.main);
+			if((warp.getCreator() != null && warp.getCreator().equalsIgnoreCase(p.getUniqueId().toString()))||
+					p.hasPermission("warp.use.*") || p.hasPermission("warp.use."+warp.getName())) {
+				warps.add(warp);
+			}
+			warps.add(warp);
+		}
+		return warps;
+	}
 
 	public List<Warp> getWarps() {
 		List<Warp> warps = new ArrayList<>();
@@ -107,6 +133,6 @@ public class Utils {
 			}
 			result = String.valueOf(String.valueOf(result)) + StringUtils.capitalize(parts[i].toLowerCase());
 		}
-		return "§f" + result;
+		return "§6" + result;
 	}
 }

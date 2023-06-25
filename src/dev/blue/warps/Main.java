@@ -2,12 +2,22 @@ package dev.blue.warps;
 
 import java.io.File;
 import java.io.IOException;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
+
+import dev.blue.warps.cmds.DelWarpCmd;
+import dev.blue.warps.cmds.DelWarpTabs;
+import dev.blue.warps.cmds.SetWarpCmd;
+import dev.blue.warps.cmds.SetWarpTabs;
+import dev.blue.warps.cmds.WarpCmd;
+import dev.blue.warps.cmds.WarpTabs;
+import dev.blue.warps.cmds.WarpsCmd;
+import dev.blue.warps.cmds.WarpsTabs;
 
 public class Main extends JavaPlugin {
 	private File w;
@@ -30,11 +40,14 @@ public class Main extends JavaPlugin {
 		setupYamls();
 		this.utils = new Utils(this);
 		this.msgs = new Msgs(this);
-		Cmds cmds = new Cmds(this);
-		getCommand("delwarp").setExecutor(cmds);
-		getCommand("setwarp").setExecutor(cmds);
-		getCommand("warp").setExecutor(cmds);
-		getCommand("warps").setExecutor(cmds);
+		getCommand("delwarp").setExecutor(new DelWarpCmd(this));
+		getCommand("delwarp").setTabCompleter(new DelWarpTabs(this));
+		getCommand("setwarp").setExecutor(new SetWarpCmd(this));
+		getCommand("setwarp").setTabCompleter(new SetWarpTabs());
+		getCommand("warp").setExecutor(new WarpCmd(this));
+		getCommand("warp").setTabCompleter(new WarpTabs(this));
+		getCommand("warps").setExecutor(new WarpsCmd(this));
+		getCommand("warps").setTabCompleter(new WarpsTabs());
 		Bukkit.getPluginManager().registerEvents(new SignListener(this), (Plugin) this);
 		Bukkit.getPluginManager().registerEvents(new GUIListener(this), (Plugin) this);
 		saveDefaultConfig();
