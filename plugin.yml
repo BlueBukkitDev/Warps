@@ -1,17 +1,19 @@
-main: blue.dev.warps.Main
+main: dev.blue.warps.Main
 name: Warps
-version: 1.9.5
+version: 2.0.8
+api-version: 1.13
 author: Blue1
+softdepend: ['Multiverse-Core', 'Multiworld']
 commands:
   warp:
     usage: /<command> [warpName]
-    description: Warps a player!
+    description: Warps a player
   warps:
     usage: /<command>
-    description: Send a list of warps!
+    description: Show all warps
   setwarp:
     usage: /<command> [warpName]
-    description: Creates a warp!
+    description: Creates a warp
   delwarp:
     usage: /<command> [warpName]
-    description: Deletes a warp!
+    description: Deletes a warp
