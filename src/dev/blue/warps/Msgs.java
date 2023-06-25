@@ -1,7 +1,6 @@
 package dev.blue.warps;
 
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 
 public class Msgs {
 	private Main main;
@@ -22,21 +21,6 @@ public class Msgs {
 	public String WARP_DOES_NOT_EXIST(String warp) {
 		return ChatColor.translateAlternateColorCodes('&', this.main.getConfig().getString("Invalid-Warp-Name")
 				.replaceAll("%warp%", warp).replaceAll("%prefix%", PREFIX()));
-	}
-
-	public String WARPS_LIST(Player p) {
-		if (!this.main.getFileBuilder().getWarpsByPermission(p).isEmpty()) {
-			String msg = "";
-			for (String each : this.main.getFileBuilder().getWarpsByPermission(p))
-				msg = String.valueOf(String.valueOf(String.valueOf(msg))) + each + ", ";
-			msg.trim();
-			if (msg.endsWith(","))
-				msg.substring(0, msg.length());
-			return ChatColor.translateAlternateColorCodes('&', this.main.getConfig().getString("Warps-List")
-					.replaceAll("%warps%", msg).replaceAll("%prefix%", PREFIX()));
-		}
-		return ChatColor.translateAlternateColorCodes('&',
-				this.main.getConfig().getString("No-Warps").replaceAll("%prefix%", PREFIX()));
 	}
 
 	public String WARP_MESSAGE(String warp) {

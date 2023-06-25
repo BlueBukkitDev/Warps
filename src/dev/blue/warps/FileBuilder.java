@@ -44,15 +44,4 @@ public class FileBuilder {
 			warps.add(each);
 		return warps;
 	}
-
-	public List<String> getWarpsByPermission(Player p) {
-		List<String> warps = new ArrayList<>();
-		for (String each : this.main.getWarps().getKeys(false)) {
-			if (p.hasPermission("warp.use.*") || p.hasPermission("warp.use." + each.toLowerCase()) || p.isOp()
-					|| (new Warp(each, this.main)).getCreator().equalsIgnoreCase(p.getUniqueId().toString())
-					|| !this.main.usePermissions())
-				warps.add(each);
-		}
-		return warps;
-	}
 }

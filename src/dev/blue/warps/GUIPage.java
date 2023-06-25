@@ -39,14 +39,13 @@ public class GUIPage {
 
 	private void addItemsToInventory() {
 		int slot = 9;
-		if (this.main.getFileBuilder().getWarpsByPermission(this.p).size() - this.page * 27 > 27)
+		if (this.main.getUtils().getUsableWarps(this.p).size() - this.page * 27 > 27)
 			this.gui.setItem(8, this.main.getUtils().next(this.page));
 		if (this.page > 0)
 			this.gui.setItem(0, this.main.getUtils().previous(this.page));
-		for (int i = this.page * 27; i < this.main.getFileBuilder().getWarpsByPermission(this.p).size()
+		for (int i = this.page * 27; i < this.main.getUtils().getUsableWarps(this.p).size()
 				&& i < (this.page + 1) * 27; i++) {
-			this.gui.setItem(slot,
-					(new Warp(this.main.getFileBuilder().getWarpsByPermission(this.p).get(i), this.main)).getGUIItem());
+			this.gui.setItem(slot, this.main.getUtils().getUsableWarps(this.p).get(i).getGUIItem());
 			slot++;
 		}
 	}

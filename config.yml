@@ -32,7 +32,6 @@ SignFormat:
   Line4: "%line4%"
 #This is the prefix for any messages. 
 Prefix: "&7[&3Warps&7] "
-GUI-Or-List: "GUI"
 #I've eliminated the data version (material>-->[:0]<--<) to keep up with deprecation and appropriate code practices. 
 Default-GUI-Warp-Item: "SPRUCE_SIGN"
 #%index% is replaced by the page number. If you don't plan on having more than one page, this can be removed.
@@ -63,7 +62,6 @@ Warp-Already-Exists: "&4There is already a warp by that name!"
 Warp-Set: "&b%warp% &6has been set to your current location."
 Warp-Deleted: "&b%warp% &6has been successfully deleted."
 Warp-Limit-Reached: "&cYou have created as many warps as you are allowed! (%limit%)"
-Warps-List: "&6Warps: &b%warps%"
 ##################################################################
 Warp-Message: "&6You have warped to &b%warp%!"
 Warp-Sign-Created: "&6You have created a warp sign for &b%warp%!"
